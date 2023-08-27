@@ -24,5 +24,4 @@ class ArrayItTest {
         assertThat(iterator.next()).isEqualTo(2);
         assertThat(iterator.next()).isEqualTo(3);
     }
-
 }
