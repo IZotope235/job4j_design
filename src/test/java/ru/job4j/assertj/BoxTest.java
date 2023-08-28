@@ -51,7 +51,7 @@ class BoxTest {
     }
 
     @Test
-    void WhenGetNumberOfVerticesIsFour() {
+    void whenGetNumberOfVerticesIsFour() {
         Box box = new Box(4, 5);
         int numberOfVertices = box.getNumberOfVertices();
         assertThat(numberOfVertices)
@@ -63,7 +63,7 @@ class BoxTest {
     }
 
     @Test
-    void WhenGetNumberOfVerticesIsMinusOne() {
+    void whenGetNumberOfVerticesIsMinusOne() {
         Box box = new Box(1, 5);
         int numberOfVertices = box.getNumberOfVertices();
         assertThat(numberOfVertices)
@@ -75,7 +75,7 @@ class BoxTest {
     }
 
     @Test
-    void WhenVertexZeroIsExistTrue() {
+    void whenVertexZeroIsExistTrue() {
         Box box = new Box(0, 5);
         boolean isExist = box.isExist();
         assertThat(isExist)
@@ -83,21 +83,21 @@ class BoxTest {
                 .isTrue();
     }
     @Test
-    void WhenVertexFourIsExistTrue() {
+    void whenVertexFourIsExistTrue() {
         Box box = new Box(4, 5);
         boolean isExist = box.isExist();
         assertThat(isExist).isTrue();
     }
 
     @Test
-    void WhenVertexOneIsExistFalse() {
+    void whenVertexOneIsExistFalse() {
         Box box = new Box(1, 5);
         boolean isExist = box.isExist();
         assertThat(isExist).isFalse();
     }
 
     @Test
-    void WhenVertexFourEdgeFiveThenGetArea() {
+    void whenVertexFourEdgeFiveThenGetArea() {
         Box box = new Box(4, 5);
         double area = box.getArea();
         assertThat(area)
@@ -108,7 +108,7 @@ class BoxTest {
     }
 
     @Test
-    void WhenVertexZeroEdgeFiveThenGetArea() {
+    void whenVertexZeroEdgeFiveThenGetArea() {
         Box box = new Box(0, 5);
         double area = box.getArea();
         assertThat(area)
@@ -119,7 +119,7 @@ class BoxTest {
     }
 
     @Test
-    void WhenVertexOneEdgeFiveThenZero() {
+    void whenVertexOneEdgeFiveThenZero() {
         Box box = new Box(1, 5);
         double area = box.getArea();
         assertThat(area)
