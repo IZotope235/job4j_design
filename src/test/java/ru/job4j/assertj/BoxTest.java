@@ -127,7 +127,4 @@ class BoxTest {
                 .isGreaterThan(-1)
                 .isZero();
     }
-
-
-
 }

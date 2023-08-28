@@ -49,5 +49,4 @@ public class Box {
             default -> 0;
         };
     }
-
 }
