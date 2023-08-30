@@ -1,6 +1,7 @@
 package ru.job4j.iterator;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 public class ArrayIt implements Iterator<Integer> {
     private final int[] data;
@@ -17,6 +18,9 @@ public class ArrayIt implements Iterator<Integer> {
 
     @Override
     public Integer next() {
+        if (!hasNext()) {
+            throw new NoSuchElementException();
+        }
         return data[point++];
     }
 }
