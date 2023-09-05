@@ -10,8 +10,6 @@ public class SimpleArrayList<T> implements SimpleList<T> {
 
     public SimpleArrayList(int capacity) {
         container = (T[]) new Object[capacity];
-        size = 0;
-        madCount = 0;
     }
 
     @Override
@@ -25,16 +23,14 @@ public class SimpleArrayList<T> implements SimpleList<T> {
 
     @Override
     public T set(int index, T newValue) {
-        Objects.checkIndex(index, size);
-        T oldValue = container[index];
+        T oldValue = get(index);
         container[index] = newValue;
         return oldValue;
     }
 
     @Override
     public T remove(int index) {
-        Objects.checkIndex(index, size);
-        T removeValue = container[index];
+        T removeValue = get(index);
         System.arraycopy(container, index + 1, container, index, container.length - index - 1);
         size--;
         madCount++;
@@ -68,7 +64,7 @@ public class SimpleArrayList<T> implements SimpleList<T> {
 
             @Override
             public T next() {
-                if (!hasNext() && size == 0) {
+                if (!hasNext()) {
                     throw new NoSuchElementException();
                 }
                 return container[point++];
