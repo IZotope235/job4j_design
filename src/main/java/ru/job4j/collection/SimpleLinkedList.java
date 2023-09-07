@@ -47,13 +47,7 @@ public class SimpleLinkedList<E> implements SimpleLinked<E> {
                 if (expectedModCount != modCount) {
                     throw new ConcurrentModificationException();
                 }
-                if (head == null) {
-                    return false;
-                }
-                if (point == null) {
-                    return true;
-                }
-                return point.next != null;
+                return point == null ? head != null : point.next != null;
             }
 
             @Override
@@ -61,11 +55,7 @@ public class SimpleLinkedList<E> implements SimpleLinked<E> {
                 if (!hasNext()) {
                     throw new NoSuchElementException();
                 }
-                if (point == null) {
-                    point = head;
-                } else {
-                    point = point.next;
-                }
+                point = point == null ? head : point.next;
                 return point.item;
             }
         };
