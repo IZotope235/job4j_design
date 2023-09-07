@@ -142,4 +142,17 @@ class ForwardLinkedTest {
         assertThat(second.next()).isEqualTo(2);
         assertThat(second.hasNext()).isFalse();
     }
+
+    @Test
+    void whenAddFirstThenGetFive() {
+        list.addFirst(5);
+        assertThat(list.get(0)).isEqualTo(5);
+    }
+
+    @Test
+    void whenAddFirstThenEmptyThenGetFive() {
+        var newList = new ForwardLinked<Integer>();
+        newList.addFirst(5);
+        assertThat(newList.get(0)).isEqualTo(5);
+    }
 }
