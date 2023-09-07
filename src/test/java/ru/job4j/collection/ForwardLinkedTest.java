@@ -150,7 +150,7 @@ class ForwardLinkedTest {
     }
 
     @Test
-    void whenAddFirstThenEmptyThenGetFive() {
+    void whenAddFirstWhenEmptyThenGetFive() {
         var newList = new ForwardLinked<Integer>();
         newList.addFirst(5);
         assertThat(newList.get(0)).isEqualTo(5);
