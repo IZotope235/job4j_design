@@ -35,7 +35,7 @@ public class ListUtils {
     }
 
     public static <T> void removeAll(List<T> list, List<T> elements) {
-        elements.forEach(element ->  removeIf(list, el -> el.equals(element)));
+        removeIf(list, elements::contains);
     }
 }
 
