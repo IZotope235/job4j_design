@@ -60,5 +60,4 @@ class SimpleArraySetTest {
         assertThat(set.add("a")).isTrue();
         assertThat(set.contains("a")).isTrue();
     }
-
 }
