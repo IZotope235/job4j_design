@@ -2,10 +2,10 @@ package ru.job4j.collection;
 
 import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.*;
-class SimpleSetTest {
+class SimpleSet2Test {
     @Test
     void when4AddAndAddFirstThenFalse() {
-        SimpleSet set = new SimpleSet();
+        SimpleSet2 set = new SimpleSet2();
         set.add("first");
         set.add("second");
         set.add("third");
