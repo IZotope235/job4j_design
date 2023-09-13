@@ -1,9 +1,6 @@
 package ru.job4j.map;
 
-import java.util.ConcurrentModificationException;
-import java.util.Iterator;
-import java.util.NoSuchElementException;
-import java.util.Objects;
+import java.util.*;
 
 public class NonCollisionMap<K, V> implements SimpleMap<K, V> {
 
@@ -46,34 +43,27 @@ public class NonCollisionMap<K, V> implements SimpleMap<K, V> {
     }
 
     private void expand() {
-        int newCapacity = capacity * 2;
-        MapEntry<K, V>[] newTable = new MapEntry[newCapacity];
-        Iterator<K> iterator = iterator();
-        while (iterator.hasNext()) {
-            K key = iterator.next();
-            MapEntry<K, V> node = table[index(key)];
-            int newIndex = (newCapacity - 1) & hash(hashCode(key));
-            if (newTable[newIndex] == null) {
-                newTable[newIndex] = node;
+        capacity = capacity * 2;
+        MapEntry<K, V>[] newTable = new MapEntry[capacity];
+        for (MapEntry<K, V> entry: table) {
+            if (entry != null) {
+                newTable[index(entry.key)] = entry;
             }
         }
-        capacity = newCapacity;
         table = newTable;
     }
 
     @Override
     public V get(K key) {
-        int hashCode = hashCode(key);
+        boolean rsl = false;
         int index = index(key);
-        if (table[index] == null) {
-            return null;
+        if (table[index] != null) {
+            K keyEl = table[index].key;
+            if (hashCode(keyEl) == hashCode(key) && Objects.equals(key, keyEl)) {
+                rsl = true;
+            }
         }
-        K keyEl = table[index].key;
-        int hashCodeEl = hashCode(keyEl);
-        if (hashCodeEl == hashCode && Objects.equals(key, keyEl)) {
-            return table[index].value;
-        }
-        return null;
+        return rsl ? table[index].value : null;
     }
 
     @Override
@@ -81,10 +71,13 @@ public class NonCollisionMap<K, V> implements SimpleMap<K, V> {
         boolean rsl = false;
         int index = index(key);
         if (table[index] != null) {
-            table[index] = null;
-            count--;
-            modCount++;
-            rsl = true;
+            K keyEl = table[index].key;
+            if (hashCode(keyEl) == hashCode(key) && Objects.equals(key, keyEl)) {
+                table[index] = null;
+                count--;
+                modCount++;
+                rsl = true;
+            }
         }
         return rsl;
     }
