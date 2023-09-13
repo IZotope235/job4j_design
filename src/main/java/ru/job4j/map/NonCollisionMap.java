@@ -19,7 +19,7 @@ public class NonCollisionMap<K, V> implements SimpleMap<K, V> {
         if (count >= capacity * LOAD_FACTOR) {
             expand();
         }
-        int index = indexFor(hash(hashCode(key)));
+        int index = index(key);
         if (table[index] == null) {
             table[index] = new MapEntry<>(key, value);
             rsl = true;
@@ -30,35 +30,41 @@ public class NonCollisionMap<K, V> implements SimpleMap<K, V> {
     }
 
     private int hash(int hashCode) {
-        return (hashCode == 0) ? 0 : (hashCode) ^ (hashCode >>> 16);
+        return (hashCode) ^ (hashCode >>> 16);
     }
 
     private int indexFor(int hash) {
-        return hash == 0 ? 0 : (table.length - 1) & hash;
+        return (capacity - 1) & hash;
     }
 
     private int hashCode(K key) {
         return Objects.hashCode(key);
     }
 
+    private int index(K key) {
+        return indexFor(hash(hashCode(key)));
+    }
+
     private void expand() {
-        capacity *= 2;
-        MapEntry<K, V>[] newTable = new MapEntry[capacity];
-        for (K key : this) {
-            int hash = hash(hashCode(key));
-            MapEntry<K, V> node = table[indexFor(hash)];
-            int index = hash == 0 ? 0 : (capacity - 1) & hash;
-            if (newTable[index] == null) {
-                newTable[index] = node;
+        int newCapacity = capacity * 2;
+        MapEntry<K, V>[] newTable = new MapEntry[newCapacity];
+        Iterator<K> iterator = iterator();
+        while (iterator.hasNext()) {
+            K key = iterator.next();
+            MapEntry<K, V> node = table[index(key)];
+            int newIndex = (newCapacity - 1) & hash(hashCode(key));
+            if (newTable[newIndex] == null) {
+                newTable[newIndex] = node;
             }
         }
+        capacity = newCapacity;
         table = newTable;
     }
 
     @Override
     public V get(K key) {
         int hashCode = hashCode(key);
-        int index = indexFor(hash(hashCode));
+        int index = index(key);
         if (table[index] == null) {
             return null;
         }
@@ -73,8 +79,9 @@ public class NonCollisionMap<K, V> implements SimpleMap<K, V> {
     @Override
     public boolean remove(K key) {
         boolean rsl = false;
-        if (get(key) != null) {
-            table[indexFor(hash(hashCode(key)))] = null;
+        int index = index(key);
+        if (table[index] != null) {
+            table[index] = null;
             count--;
             modCount++;
             rsl = true;
