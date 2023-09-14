@@ -42,6 +42,18 @@ public class NonCollisionMap<K, V> implements SimpleMap<K, V> {
         return indexFor(hash(hashCode(key)));
     }
 
+    private boolean keyCompare(K key) {
+        boolean rsl = false;
+        int index = index(key);
+        if (table[index] != null) {
+            K keyEl = table[index].key;
+            if (hashCode(keyEl) == hashCode(key) && Objects.equals(key, keyEl)) {
+                rsl = true;
+            }
+        }
+        return rsl;
+    }
+
     private void expand() {
         capacity = capacity * 2;
         MapEntry<K, V>[] newTable = new MapEntry[capacity];
@@ -55,29 +67,17 @@ public class NonCollisionMap<K, V> implements SimpleMap<K, V> {
 
     @Override
     public V get(K key) {
-        boolean rsl = false;
-        int index = index(key);
-        if (table[index] != null) {
-            K keyEl = table[index].key;
-            if (hashCode(keyEl) == hashCode(key) && Objects.equals(key, keyEl)) {
-                rsl = true;
-            }
-        }
-        return rsl ? table[index].value : null;
+        return keyCompare(key) ? table[index(key)].value : null;
     }
 
     @Override
     public boolean remove(K key) {
         boolean rsl = false;
-        int index = index(key);
-        if (table[index] != null) {
-            K keyEl = table[index].key;
-            if (hashCode(keyEl) == hashCode(key) && Objects.equals(key, keyEl)) {
-                table[index] = null;
-                count--;
-                modCount++;
-                rsl = true;
-            }
+        if (keyCompare(key)) {
+            table[index(key)] = null;
+            count--;
+            modCount++;
+            rsl = true;
         }
         return rsl;
     }
