@@ -5,20 +5,20 @@ import java.util.*;
 public class Analize {
 
     public static Info diff(Set<User> previous, Set<User> current) {
-        int added = 0, changed = 0, same = 0;
+        int added = 0, changed = 0, same = 0, userId;
         Map<Integer, String> previousMap = new HashMap<>();
         for (User user : previous) {
             previousMap.put(user.getId(), user.getName());
         }
         for (User user : current) {
-            if (!previousMap.containsKey(user.getId())) {
+            userId = user.getId();
+            if (!previousMap.containsKey(userId)) {
                 added++;
                 continue;
             }
-            if (previousMap.get(user.getId()).equals(user.getName())) {
+            if (previousMap.get(userId).equals(user.getName())) {
                 same++;
-            }
-            if (!previousMap.get(user.getId()).equals(user.getName())) {
+            } else {
                 changed++;
             }
         }
