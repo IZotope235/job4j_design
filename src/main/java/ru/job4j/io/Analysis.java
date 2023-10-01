@@ -18,12 +18,12 @@ public class Analysis {
                     .map(s -> s.split(" ", 2))
                     .collect(Collectors.toList());
             for (String[] arr : listIn) {
-                if(serverOn && (arr[0].equals("400") || arr[0].equals("500"))) {
+                if (serverOn && (arr[0].equals("400") || arr[0].equals("500"))) {
                     stringBuilder.append(arr[1]);
                     stringBuilder.append(";");
                     serverOn = false;
                 }
-                if(!serverOn && (arr[0].equals("200") || arr[0].equals("300"))) {
+                if (!serverOn && (arr[0].equals("200") || arr[0].equals("300"))) {
                     stringBuilder.append(arr[1]);
                     stringBuilder.append(";");
                     stringBuilder.append(System.lineSeparator());
@@ -31,11 +31,9 @@ public class Analysis {
                 }
             }
             out.printf(stringBuilder.toString());
-
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
     public static void main(String[] args) {
         Analysis analysis = new Analysis();
