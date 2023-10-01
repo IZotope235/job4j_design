@@ -15,13 +15,11 @@ public class Analysis {
             while (!((bufferString = in.readLine()) == null)) {
                 bufferArray = bufferString.split(" ", 2);
                 if (serverOn && (bufferArray[0].equals("400") || bufferArray[0].equals("500"))) {
-                    out.printf(bufferArray[1]);
-                    out.printf(";");
+                    out.printf("%s;",bufferArray[1]);
                     serverOn = false;
                 }
                 if (!serverOn && (bufferArray[0].equals("200") || bufferArray[0].equals("300"))) {
-                    out.printf(bufferArray[1]);
-                    out.println(";");
+                    out.printf("%s;%n",bufferArray[1]);
                     serverOn = true;
                 }
             }
