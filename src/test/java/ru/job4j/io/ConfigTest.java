@@ -52,4 +52,20 @@ class ConfigTest {
         assertThatThrownBy(config::load)
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    void whenWithoutEqualSymbol() {
+        String path = "./data/pair_without_equal_symbol.properties";
+        Config config = new Config(path);
+        assertThatThrownBy(config::load)
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void whenWithEqualSymbolNotFirst() {
+        String path = "./data/pair_with_hash_symbol_not_first.properties";
+        Config config = new Config(path);
+        config.load();
+        assertThat(config.value("name")).isEqualTo("Marat#");
+    }
 }

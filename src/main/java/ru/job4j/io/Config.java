@@ -17,10 +17,10 @@ public class Config {
     public void load() {
         try (BufferedReader in = new BufferedReader(new FileReader(path))) {
             in.lines()
-                    .filter(s -> !s.isBlank() && !s.contains("#"))
+                    .filter(s -> !s.isBlank() && !s.startsWith("#"))
                     .map(s -> s.split("=", 2))
                     .forEach(arr -> {
-                        if (arr[0].isEmpty() || arr[1].isEmpty()) {
+                        if (arr.length == 1 || arr[0].isEmpty() || arr[1].isEmpty()) {
                             throw new IllegalArgumentException();
                         }
                         values.put(arr[0], arr[1]);
