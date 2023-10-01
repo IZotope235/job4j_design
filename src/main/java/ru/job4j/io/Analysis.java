@@ -31,11 +31,9 @@ public class Analysis {
                 }
             }
             out.printf(stringBuilder.toString());
-
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
     public static void main(String[] args) {
         Analysis analysis = new Analysis();
