@@ -24,11 +24,12 @@ public class Search {
         if (args.length != 2) {
             throw new IllegalArgumentException("Illegal number of parameters");
         }
-        if (args[0].equals("null")) {
-            throw new IllegalArgumentException("Root folder is null. Enter root folder path");
+        Path path = Paths.get(args[0]);
+        if (!path.toFile().isDirectory()) {
+            throw new IllegalArgumentException("Argument is not directory");
         }
-        if (args[1].equals("null")) {
-            throw new IllegalArgumentException("Search pattern is empty. Enter search pattern like \".js\"");
+        if (!args[1].matches("^.[A-z]+")) {
+            throw new IllegalArgumentException("Enter search pattern like \".js\"");
         }
     }
 }
