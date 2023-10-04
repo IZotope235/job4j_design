@@ -62,9 +62,7 @@ public class Zip {
         var argsName = ArgsName.of(args);
         validateArguments(argsName);
         var source = Search.search(Paths.get(argsName.get("d")),
-                p -> !p.toFile().getName().endsWith(argsName.get("e")))
-                .stream()
-                .toList();
+                p -> !p.toFile().getName().endsWith(argsName.get("e")));
         zip.packFiles(source, new File("./" + argsName.get("o")));
     }
 }
