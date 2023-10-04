@@ -20,7 +20,7 @@ public class Search {
         return searcher.getPaths();
     }
 
-    private static void validParameter(String[] args) {
+    public static void validParameter(String[] args) {
         if (args.length != 2) {
             throw new IllegalArgumentException("Illegal number of parameters");
         }
@@ -28,7 +28,7 @@ public class Search {
         if (!path.toFile().isDirectory()) {
             throw new IllegalArgumentException("Argument is not directory");
         }
-        if (!args[1].matches("^.[A-z]+")) {
+        if (!args[1].matches("^\\.[a-zA-Z0-9]+$")) {
             throw new IllegalArgumentException("Enter search pattern like \".js\"");
         }
     }
