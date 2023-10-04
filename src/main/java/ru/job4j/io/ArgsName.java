@@ -1,5 +1,7 @@
 package ru.job4j.io;
 
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -28,11 +30,15 @@ public class ArgsName {
         if (args.length == 0) {
             throw new IllegalArgumentException("Arguments not passed to program");
         }
+        if (args.length != 3) {
+            throw new IllegalArgumentException("Three arguments must be passed to program");
+        }
         for (String arg : args) {
             validateArgument(arg);
         }
         ArgsName names = new ArgsName();
         names.parse(args);
+        names.validateArgumentsToCreateZip();
         return names;
     }
 
@@ -61,6 +67,30 @@ public class ArgsName {
         if (keyValueArr[1].isEmpty()) {
             throw new IllegalArgumentException(
                     String.format("Error: This argument '%s' does not contain a value", arg));
+        }
+    }
+
+    private void validateArgumentsToCreateZip() {
+        Path path = Paths.get(values.get("d"));
+        if (!path.toFile().exists()) {
+            throw new IllegalArgumentException("The path is not exist");
+        }
+        if (!path.toFile().isDirectory()) {
+            throw new IllegalArgumentException("The path is not directory");
+        }
+        String fileExtension = values.get("e");
+        if (!fileExtension.startsWith(".")) {
+            throw new IllegalArgumentException(("Search pattern does not start with '.' character"));
+        }
+        if (!fileExtension.matches("^\\.[a-zA-Z0-9]+$")) {
+            throw new IllegalArgumentException("Search pattern must be like \".js\"");
+        }
+        String fileTarget = values.get("o");
+        if (!fileTarget.endsWith(".zip")) {
+            throw new IllegalArgumentException(("Target file does not '.zip' file"));
+        }
+        if (!fileTarget.matches("^[a-zA-Z0-9._-]+\\.[a-zA-Z0-9]+$")) {
+            throw new IllegalArgumentException("Target file does not have proper name");
         }
     }
 }
