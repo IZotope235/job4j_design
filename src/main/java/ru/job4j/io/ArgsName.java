@@ -30,9 +30,6 @@ public class ArgsName {
         if (args.length == 0) {
             throw new IllegalArgumentException("Arguments not passed to program");
         }
-        if (args.length != 3) {
-            throw new IllegalArgumentException("Three arguments must be passed to program");
-        }
         for (String arg : args) {
             validateArgument(arg);
         }
