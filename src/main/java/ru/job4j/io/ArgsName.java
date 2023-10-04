@@ -35,7 +35,7 @@ public class ArgsName {
         }
         ArgsName names = new ArgsName();
         names.parse(args);
-        names.validateArgumentsToCreateZip();
+        names.validateArgumentsForCreateZip();
         return names;
     }
 
@@ -67,22 +67,22 @@ public class ArgsName {
         }
     }
 
-    private void validateArgumentsToCreateZip() {
-        Path path = Paths.get(values.get("d"));
+    private void validateArgumentsForCreateZip() {
+        Path path = Paths.get(get("d"));
         if (!path.toFile().exists()) {
             throw new IllegalArgumentException("The path is not exist");
         }
         if (!path.toFile().isDirectory()) {
             throw new IllegalArgumentException("The path is not directory");
         }
-        String fileExtension = values.get("e");
+        String fileExtension = get("e");
         if (!fileExtension.startsWith(".")) {
             throw new IllegalArgumentException(("Search pattern does not start with '.' character"));
         }
         if (!fileExtension.matches("^\\.[a-zA-Z0-9]+$")) {
             throw new IllegalArgumentException("Search pattern must be like \".js\"");
         }
-        String fileTarget = values.get("o");
+        String fileTarget = get("o");
         if (!fileTarget.endsWith(".zip")) {
             throw new IllegalArgumentException(("Target file does not '.zip' file"));
         }
