@@ -23,25 +23,23 @@ public class ConsoleChat {
     public void run() {
         List<String> listLog = new ArrayList<>();
         List<String> listAnswers = this.readPhrases();
-        int listAnswersSize = listAnswers.size();
         String userInput = CONTINUE;
         String botAnswer;
+        int listAnswersSize = listAnswers.size();
         Scanner scanner = new Scanner(System.in);
-        while (!userInput.equals(OUT)) {
-            if (userInput.equals(CONTINUE)) {
-                while (!userInput.equals(STOP)) {
+        out:
+        while (!OUT.equals(userInput)) {
+            if (CONTINUE.equals(userInput)) {
+                while (!STOP.equals(userInput)) {
                     botAnswer = listAnswers.get(((int) (Math.random() * listAnswersSize)));
                     listLog.add(botAnswer);
                     System.out.println(botAnswer);
                     userInput = scanner.nextLine();
                     listLog.add(userInput);
-                    if (userInput.equals(OUT)) {
-                        break;
+                    if (OUT.equals(userInput)) {
+                        break out;
                     }
                 }
-            }
-            if (userInput.equals(OUT)) {
-                break;
             }
             userInput = scanner.nextLine();
             listLog.add(userInput);
@@ -51,12 +49,13 @@ public class ConsoleChat {
 
     private List<String> readPhrases() {
         Path botAnswers = Paths.get("data/" + this.botAnswers);
-        List<String> listAnswers = new ArrayList<>();
         if (!botAnswers.toFile().exists()) {
             throw new IllegalArgumentException(
                     String.format("File '%s' is not exist", this.botAnswers));
         }
-        try (BufferedReader in = new BufferedReader(new FileReader(botAnswers.toString()))) {
+        List<String> listAnswers = new ArrayList<>();
+        try (BufferedReader in = new BufferedReader(
+                new FileReader(botAnswers.toString(), StandardCharsets.UTF_8))) {
            listAnswers = in.lines().toList();
         } catch (IOException e) {
             e.printStackTrace();
