@@ -4,14 +4,26 @@ import ru.job4j.serialization.java.Contact;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import javax.xml.bind.annotation.*;
 import java.util.Arrays;
 
+@XmlRootElement(name = "customer")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Customer {
-    private final boolean active;
-    private final int id;
-    private final String name;
-    private final Contact contact;
-    private final String[] topCategories;
+    @XmlAttribute
+    private boolean active;
+    @XmlAttribute
+    private int id;
+    @XmlAttribute
+    private String name;
+    private Contact contact;
+    @XmlElementWrapper(name = "topCategories")
+    @XmlElement(name = "topCategory")
+    private String[] topCategories;
+
+    public Customer() {
+
+    }
 
     public Customer(boolean active, int id, String name, Contact contact, String[] topCategories) {
         this.active = active;
