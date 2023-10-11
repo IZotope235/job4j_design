@@ -1,0 +1,9 @@
+<?xml version="1.1" encoding="UTF-8" ?>
+<customer active="true" id="345345" name="Ivan Ivanov">
+    <contact zipCode="45454" phone="+7345345345"/>
+    <topCategories>
+        <topCategory>fish</topCategory>
+        <topCategory>vine</topCategory>
+        <topCategory>cheese</topCategory>
+    </topCategories>
+</customer>
