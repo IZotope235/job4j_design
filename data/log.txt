@@ -1,10 +1,37 @@
-0:0:0:0:0:0:0:1 - - [19/Feb/2020:15:21:18 +0300] "GET /items/ajax.html HTTP/1.1" 404 1113
-0:0:0:0:0:0:0:1 - - [19/Feb/2020:15:21:23 +0300] "GET /job4j.ru/profile HTTP/1.1" 302 -
-0:0:0:0:0:0:0:1 - - [19/Feb/2020:15:21:23 +0300] "GET /job4j.ru/profile/ HTTP/1.1" 404 1110
-0:0:0:0:0:0:0:1 - - [19/Feb/2020:15:21:34 +0300] "GET /job4j.ru/profileNew/ HTTP/1.1" 404 -
-0:0:0:0:0:0:0:1 - - [19/Feb/2020:15:21:48 +0300] "GET / HTTP/1.1" 200 11488
-0:0:0:0:0:0:0:1 - - [19/Feb/2020:15:21:49 +0300] "GET /404.png HTTP/1.1" 200 5103
-0:0:0:0:0:0:0:1 - - [19/Feb/2020:15:21:49 +0300] "GET /tomcat.css HTTP/1.1" 200 5931
-0:0:0:0:0:0:0:1 - - [19/Feb/2020:15:21:49 +0300] "GET /bg-nav.png HTTP/1.1" 200 1404
-0:0:0:0:0:0:0:1 - - [19/Feb/2020:15:21:49 +0300] "GET /bg-button.png HTTP/1.1" 200 713
-0:0:0:0:0:0:0:1 - - [19/Feb/2020:15:21:49 +0300] "GET /bg-middle.png HTTP/1.1" 200 4048
+c:\projects\job4j_design\.idea\checkstyleidea-libs\readme.txt
+c:\projects\job4j_design\data\404.txt
+c:\projects\job4j_design\data\botAnswers.txt
+c:\projects\job4j_design\data\botLog.txt
+c:\projects\job4j_design\data\even.txt
+c:\projects\job4j_design\data\input.txt
+c:\projects\job4j_design\data\log.txt
+c:\projects\job4j_design\target\surefire-reports\ru.job4j.assertj.BoxTest.txt
+c:\projects\job4j_design\target\surefire-reports\ru.job4j.assertj.NameLoadTest.txt
+c:\projects\job4j_design\target\surefire-reports\ru.job4j.assertj.SimpleConvertTest.txt
+c:\projects\job4j_design\target\surefire-reports\ru.job4j.assertj.SimpleModelTest.txt
+c:\projects\job4j_design\target\surefire-reports\ru.job4j.collection.ForwardLinkedTest.txt
+c:\projects\job4j_design\target\surefire-reports\ru.job4j.collection.RevertLinkedTest.txt
+c:\projects\job4j_design\target\surefire-reports\ru.job4j.collection.SimpleArrayListTest.txt
+c:\projects\job4j_design\target\surefire-reports\ru.job4j.collection.SimpleArraySetTest.txt
+c:\projects\job4j_design\target\surefire-reports\ru.job4j.collection.SimpleLinkedListTest.txt
+c:\projects\job4j_design\target\surefire-reports\ru.job4j.collection.SimpleQueueTest.txt
+c:\projects\job4j_design\target\surefire-reports\ru.job4j.collection.SimpleSet2Test.txt
+c:\projects\job4j_design\target\surefire-reports\ru.job4j.collection.SimpleStackTest.txt
+c:\projects\job4j_design\target\surefire-reports\ru.job4j.generic.RoleStoreTest.txt
+c:\projects\job4j_design\target\surefire-reports\ru.job4j.generic.UserStoreTest.txt
+c:\projects\job4j_design\target\surefire-reports\ru.job4j.io.AnalysisTest.txt
+c:\projects\job4j_design\target\surefire-reports\ru.job4j.io.ArgsNameTest.txt
+c:\projects\job4j_design\target\surefire-reports\ru.job4j.io.ConfigTest.txt
+c:\projects\job4j_design\target\surefire-reports\ru.job4j.io.scanner.CSVReaderTest.txt
+c:\projects\job4j_design\target\surefire-reports\ru.job4j.iterator.ArrayItTest.txt
+c:\projects\job4j_design\target\surefire-reports\ru.job4j.iterator.BackwardArrayItTest.txt
+c:\projects\job4j_design\target\surefire-reports\ru.job4j.iterator.BalancerTest.txt
+c:\projects\job4j_design\target\surefire-reports\ru.job4j.iterator.CyclicIteratorTest.txt
+c:\projects\job4j_design\target\surefire-reports\ru.job4j.iterator.EvenNumbersIteratorTest.txt
+c:\projects\job4j_design\target\surefire-reports\ru.job4j.iterator.FlatMapTest.txt
+c:\projects\job4j_design\target\surefire-reports\ru.job4j.iterator.ListUtilsTest.txt
+c:\projects\job4j_design\target\surefire-reports\ru.job4j.iterator.MatrixItTest.txt
+c:\projects\job4j_design\target\surefire-reports\ru.job4j.iterator.NonNullIteratorTest.txt
+c:\projects\job4j_design\target\surefire-reports\ru.job4j.map.NonCollisionMapTest.txt
+c:\projects\job4j_design\target\surefire-reports\ru.job4j.question.AnalizeTest.txt
+c:\projects\job4j_design\target\surefire-reports\ru.job4j.tree.SimpleTreeTest.txt
