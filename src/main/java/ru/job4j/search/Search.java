@@ -9,7 +9,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 import java.util.Scanner;
 
 public class Search {
@@ -30,26 +29,26 @@ public class Search {
     public static void main(String[] args) throws IOException {
         ArgsName argsName = ArgsName.of(input());
         Search search = new Search(argsName);
-        SearchVisitor searchVisitor = search.searchVisitorGenerator()
-                .orElseThrow(IllegalArgumentException::new);
+        SearchVisitor searchVisitor = search.searchVisitorGenerator();
         Files.walkFileTree(Paths.get(search.startDirectory), searchVisitor);
         search.print(searchVisitor.getSearchResultsList());
     }
 
-    private Optional<SearchVisitor> searchVisitorGenerator() {
-        SearchVisitor searchVisitor = null;
-        if (SearchType.NAME.get().equals(type)) {
-            searchVisitor = new SearchVisitorString(pattern);
+    private SearchVisitor searchVisitorGenerator() {
+        SearchVisitor searchVisitor;
+        switch (type) {
+            case ("name") ->
+                searchVisitor = new SearchVisitorString(pattern);
+            case ("regex") ->
+                searchVisitor = new SearchVisitorRegex(pattern);
+            case ("mask") -> {
+                String searchingPattern = pattern.replace(".", "\\.")
+                        .replace("*", ".*").replace("?", ".");
+                searchVisitor = new SearchVisitorRegex(searchingPattern);
+            }
+            default -> throw new IllegalArgumentException("Illegal type argument");
         }
-        if (SearchType.REGEX.get().equals(type)) {
-            searchVisitor = new SearchVisitorRegex(pattern);
-        }
-        if (SearchType.MASK.get().equals(type)) {
-            String searchingPattern = pattern.replace(".", "\\.")
-                    .replace("*", ".*").replace("?", ".");
-            searchVisitor = new SearchVisitorRegex(searchingPattern);
-        }
-        return Optional.ofNullable(searchVisitor);
+        return searchVisitor;
     }
 
     private static String[] input() {
@@ -62,9 +61,8 @@ public class Search {
     private void print(List<String> searchResultsList) {
         searchResultsList.forEach(System.out::println);
         Path outFile = Paths.get("./data/" + targetFile);
-        outFile.toFile().delete();
         try (PrintWriter pw = new PrintWriter(
-                new FileWriter(outFile.toString(), StandardCharsets.UTF_8, true))) {
+                new FileWriter(outFile.toString(), StandardCharsets.UTF_8, false))) {
             for (String string : searchResultsList) {
                 pw.println(string);
             }
