@@ -35,22 +35,13 @@ public class Search {
     }
 
     private SearchVisitor searchVisitorGenerator() {
-        SearchVisitor searchVisitor;
-        switch (type) {
-            case ("name") -> {
-                searchVisitor = new SearchVisitorString(pattern);
-            }
-            case ("regex") -> {
-                searchVisitor = new SearchVisitorRegex(pattern);
-            }
-            case ("mask") -> {
-                String searchingPattern = pattern.replace(".", "\\.")
-                        .replace("*", ".*").replace("?", ".");
-                searchVisitor = new SearchVisitorRegex(searchingPattern);
-            }
+        return switch (type) {
+            case ("name") -> new SearchVisitorString(pattern);
+            case ("regex") -> new SearchVisitorRegex(pattern);
+            case ("mask") -> new SearchVisitorRegex(pattern.replace(".", "\\.")
+                        .replace("*", ".*").replace("?", "."));
             default -> throw new IllegalArgumentException("Illegal type argument");
-        }
-        return searchVisitor;
+        };
     }
 
     private static String[] input() {
