@@ -1,10 +1,6 @@
 package ru.job4j;
 
-import java.io.BufferedReader;
-import java.io.Console;
-import java.io.FileReader;
-import java.io.InputStreamReader;
-import java.nio.file.Path;
+import java.io.*;
 
 /**
  * Hello world!

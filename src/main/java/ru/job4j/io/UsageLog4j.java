@@ -3,6 +3,8 @@ package ru.job4j.io;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.Scanner;
+
 public class UsageLog4j {
 
     private static final Logger LOG = LoggerFactory.getLogger(UsageLog4j.class.getName());
@@ -21,6 +23,5 @@ public class UsageLog4j {
                 name, age, weight, salary, numberOfCommits);
         LOG.debug("\nIs programmer? : {}, height : {}, code line by day : {}, group : {}",
                 isProgrammer, height, codeLineByDay, group);
-
     }
 }

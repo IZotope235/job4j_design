@@ -30,17 +30,19 @@ public class Search {
         ArgsName argsName = ArgsName.of(input());
         Search search = new Search(argsName);
         SearchVisitor searchVisitor = search.searchVisitorGenerator();
-        Files.walkFileTree(Paths.get(search.startDirectory), searchVisitor);
+        Files.walkFileTree(Path.of(search.startDirectory), searchVisitor);
         search.print(searchVisitor.getSearchResultsList());
     }
 
     private SearchVisitor searchVisitorGenerator() {
         SearchVisitor searchVisitor;
         switch (type) {
-            case ("name") ->
+            case ("name") -> {
                 searchVisitor = new SearchVisitorString(pattern);
-            case ("regex") ->
+            }
+            case ("regex") -> {
                 searchVisitor = new SearchVisitorRegex(pattern);
+            }
             case ("mask") -> {
                 String searchingPattern = pattern.replace(".", "\\.")
                         .replace("*", ".*").replace("?", ".");
@@ -60,7 +62,7 @@ public class Search {
 
     private void print(List<String> searchResultsList) {
         searchResultsList.forEach(System.out::println);
-        Path outFile = Paths.get("./data/" + targetFile);
+        Path outFile = Path.of("./data/" + targetFile);
         try (PrintWriter pw = new PrintWriter(
                 new FileWriter(outFile.toString(), StandardCharsets.UTF_8, false))) {
             for (String string : searchResultsList) {
@@ -76,7 +78,7 @@ public class Search {
         String searchType = argsName.get("t");
         String targetFile = argsName.get("o");
 
-        if (!Paths.get(startDirectory).toFile().exists()) {
+        if (!Path.of(startDirectory).toFile().exists()) {
             throw new IllegalArgumentException("The start path is not exist");
         }
         if (Arrays.stream(SearchType.values())

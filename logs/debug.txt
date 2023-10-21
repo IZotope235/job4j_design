@@ -1,0 +1,19 @@
+2023-10-18 20:38:17,987 DEBUG ru.job4j.io.UsageLog4j:main:20 - 
+User info name : Peter Arsentev, age : 33, weight : 85, salary : 150000, commits : 4239857394857938457, 
+2023-10-18 20:38:17,991 DEBUG ru.job4j.io.UsageLog4j:main:22 - 
+Is programmer? : true, height : 1.81, code line by day : 1.2414423234234534E7, group : A
+2023-10-19 16:37:18,447 ERROR ru.job4j.search.Search:validateSearchArguments:92 - Exception in validateSearchArguments method
+2023-10-19 16:38:02,961 ERROR ru.job4j.search.Search:validateSearchArguments:92 - Exception in validateSearchArguments method
+java.lang.IllegalArgumentException: The start path is not exist
+	at ru.job4j.search.Search.validateSearchArguments(Search.java:90)
+	at ru.job4j.search.Search.<init>(Search.java:29)
+	at ru.job4j.search.Search.main(Search.java:38)
+2023-10-19 16:45:09,393 ERROR ru.job4j.search.Search:validateSearchArguments:107 - Exception in validateSearchArguments method
+java.lang.IllegalArgumentException: Illegal search type argument
+	at ru.job4j.search.Search.validateSearchArguments(Search.java:105)
+	at ru.job4j.search.Search.<init>(Search.java:29)
+	at ru.job4j.search.Search.main(Search.java:38)
+2023-10-19 16:45:09,398 ERROR ru.job4j.search.Search:searchVisitorGenerator:62 - Exception in searchVisitorGenerator method
+java.lang.IllegalArgumentException: Illegal type argument
+	at ru.job4j.search.Search.searchVisitorGenerator(Search.java:60)
+	at ru.job4j.search.Search.main(Search.java:39)
