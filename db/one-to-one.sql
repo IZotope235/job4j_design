@@ -21,4 +21,3 @@ insert into client_insurance(client_id, insurance_id) values (1, 1);
 insert into client(name) values ('John');
 insert into insurance(insuranceNumber) values (345345345);
 insert into client_insurance(client_id, insurance_id) values (2, 2);
-
