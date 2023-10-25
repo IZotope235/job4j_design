@@ -30,3 +30,19 @@ insert into pupil_subject(pupil_id, subject_id) values (2, 2);
 insert into pupil_subject(pupil_id, subject_id) values (2, 3);
 insert into pupil_subject(pupil_id, subject_id) values (3, 3);
 insert into pupil_subject(pupil_id, subject_id) values (3, 4);
+
+select ps.id as "Номер",
+pupil.name as "Ученик",
+subject.subject as "Предмет"
+from pupil_subject as ps
+join pupil on ps.pupil_id = pupil.id
+join subject on ps.subject_id = subject.id
+where pupil.name like '%Ivan%';
+
+select ps.id as "Номер",
+pupil.name as "Ученик",
+subject.subject as "Предмет"
+from pupil_subject as ps
+join pupil on ps.pupil_id = pupil.id
+join subject on ps.subject_id = subject.id
+where subject.subject like '%Math%';
