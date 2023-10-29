@@ -30,10 +30,10 @@ insert into attachs(name, item_id) values ('iphone-view-2.jpg', 2);
 insert into attachs(name, item_id) values ('sony-view-1.jpg', 3);
 insert into attachs(name, item_id) values ('sony-view-2.jpg', 3);
 
-insert into comments(comment, item_id) values ('OK', 1);
-insert into comments(comment, item_id) values ('Super item', 2);
-insert into comments(comment, item_id) values ('I love it', 2);
-insert into comments(comment, item_id) values ('I hate it', 3);
+insert into comments(comment, item_id) values('OK', 1);
+insert into comments(comment, item_id) values('Super item', 2);
+insert into comments(comment, item_id) values('I love it', 2);
+insert into comments(comment, item_id) values('I hate it', 3);
 
 
 
